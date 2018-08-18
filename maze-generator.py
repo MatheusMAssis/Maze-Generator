@@ -127,7 +127,7 @@ def make_maze(x, y):
             
     #--- printing the size of maze (without borders) ---#
     
-    print(x-2,"x",y-2)
+    print("Real Size:", x-2,"x",y-2)
     
     #--- ploting Maze ---#
     
