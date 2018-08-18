@@ -1,4 +1,5 @@
 import random as rd
+import numpy as np
 import matplotlib.pyplot as pyplot
 from queue import PriorityQueue
 
@@ -79,6 +80,16 @@ def make_maze(x, y):
 
     wall_list = MyPriorityQueue()
     
+    #--- coloring the maze ---#
+    
+    palletes =  {"maze":  np.array([[1.0, 1.0, 1.0],     #--- 0 = white (path) ---#
+                                    [0.0, 0.0, 0.0],     #--- 1 = black (wall) ---#
+                                    [0.0, 1.0, 0.0],     #--- 2 = green (init) ---#
+                                    [1.0, 0.0, 0.0]])}   #--- 3 = red (target) ---#
+    
+    def create_image(boolean_array, palette_name):
+        return palletes[palette_name][boolean_array.astype(int)]
+    
     #--- using three matrix, it was easier to localize whe points that I needed during the code ---#
     
     grid = [[Wall(i, j) for j in range(y)] for i in range(x)]  #---  to get track of all objects   ---#
@@ -114,6 +125,7 @@ def make_maze(x, y):
         if cell.open_neighbors <= 1: #--- if it has less than 1 adjacent neighbor that is a path ---#
             cell.is_path = True
             cell.is_visited = True
+            last_cell = cell  #--- the last cell to turn into a path is the target point in the maze ---#
             for neigh in cell.neighbors:
                 if not neigh.is_visited:
                     if neigh.open_neighbors <= 1:
@@ -124,14 +136,24 @@ def make_maze(x, y):
     for i in range(x):
         for j in range(y):
             matrix[i][j] = grid[i][j].draw()
-            
-    #--- printing the size of maze (without borders) ---#
     
-    print("Real Size:", x-2,"x",y-2)
+    matrix[1][1] = 2
+    matrix[last_cell.position[0]][last_cell.position[1]] = 3
+    
+    #--- turning matrix into numpy array ---#
+            
+    maze = np.array([np.array(i) for i in matrix])
+    
+    #--- printing the size of maze (without the borders) ---#
+    
+    print("  Real Size:", x-2,"x",y-2)
     
     #--- ploting Maze ---#
     
-    pyplot.figure(figsize=(10, 5))
-    pyplot.imshow(matrix, cmap=pyplot.cm.binary, interpolation='nearest')
+    image = create_image(boolean_array=maze, palette_name='maze')
+    pyplot.figure(figsize=(16, 8))
+    pyplot.imshow(image, interpolation='nearest')
     pyplot.xticks([]), pyplot.yticks([])
     pyplot.show()
+    
+    return matrix, last_cell
