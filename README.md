@@ -1,6 +1,6 @@
 # Maze-Generator
 
-Using a Randomized Prim's Algorithm, I created a maze generator. It was a one day work.
+In a one-day work, using a Randomized Prim's Algorithm, I created a maze generator. To use this generator, you just got to use your favorite IDE that supports matplotlib.pyplot and run this code as { make-maze(x, y) | x = width, y = length }. It will return a plot of the maze.
 
 #### created by: Matheus de Moncada Assis
 
