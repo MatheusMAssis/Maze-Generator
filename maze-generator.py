@@ -137,8 +137,8 @@ def make_maze(x, y):
         for j in range(y):
             matrix[i][j] = grid[i][j].draw()
     
-    matrix[1][1] = 2
-    matrix[last_cell.position[0]][last_cell.position[1]] = 3
+    matrix[1][1] = 2                                          #--- initial point = green ---#
+    matrix[last_cell.position[0]][last_cell.position[1]] = 3  #---  target point = red   ---#
     
     #--- turning matrix into numpy array ---#
             
