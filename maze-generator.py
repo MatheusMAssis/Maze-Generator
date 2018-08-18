@@ -118,14 +118,15 @@ def make_maze(x, y):
     for neigh in first_cell.neighbors:
         if not neigh.is_visited:
             wall_list.put(neigh, neigh.weight)
-            
+    
     while not wall_list.empty():
         cell = wall_list.get()
         cell.count_open_neigh()
         if cell.open_neighbors <= 1: #--- if it has less than 1 adjacent neighbor that is a path ---#
             cell.is_path = True
             cell.is_visited = True
-            last_cell = cell  #--- the last cell to turn into a path is the target point in the maze ---#
+            if cell.position[1] == 1 or cell.position[1] == y - 2:
+                last_cell = cell #--- the last cell that is in the border to turn into a path is the target point in the maze ---#
             for neigh in cell.neighbors:
                 if not neigh.is_visited:
                     if neigh.open_neighbors <= 1:
@@ -137,8 +138,11 @@ def make_maze(x, y):
         for j in range(y):
             matrix[i][j] = grid[i][j].draw()
     
-    matrix[1][1] = 2                                          #--- initial point = green ---#
-    matrix[last_cell.position[0]][last_cell.position[1]] = 3  #---  target point = red   ---#
+    matrix[1][0] = 2                                                   #--- entrance point = green ---#   
+    if last_cell.position[1] == 1:                                     #---    exit point = red    ---#                                 
+        matrix[last_cell.position[0]][last_cell.position[1] - 1] = 3
+    else:
+        matrix[last_cell.position[0]][last_cell.position[1] + 1] = 3
     
     #--- turning matrix into numpy array ---#
             
