@@ -73,11 +73,7 @@ class Wall:
             return 0
         else:
             return 1
-
-
-
-
-#--- main function ---#
+            
 
 def make_maze(x, y):
 
@@ -128,6 +124,10 @@ def make_maze(x, y):
     for i in range(x):
         for j in range(y):
             matrix[i][j] = grid[i][j].draw()
+            
+    #--- printing the size of maze (without borders) ---#
+    
+    print(x-2,"x",y-2)
     
     #--- ploting Maze ---#
     
