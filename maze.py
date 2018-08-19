@@ -1,6 +1,7 @@
 import random as rd
 import numpy as np
 import matplotlib.pyplot as pyplot
+import time as t
 from queue import PriorityQueue
 
 #--- changing priority queue a little bit ---#
@@ -258,6 +259,8 @@ def solve_aux(queue, target):
         
 def PathFinder(x, y):
     
+    start= t.time()
+    
     #--- plotting the initial maze with the start as a green square and exit as a red square ---#
     
     print("                   #--- Initial Maze ---#")
@@ -292,7 +295,7 @@ def PathFinder(x, y):
             
     maze = np.array([np.array(i) for i in matrix])
     
-    #--- printing final solution to the maze ---#
+    #--- printing final solution to the maze with the elapsed time ---#
     
     print("                   #--- Final Solution ---#")
     image = create_image(boolean_array=maze, palette_name='maze')
@@ -300,3 +303,4 @@ def PathFinder(x, y):
     pyplot.imshow(image, interpolation='nearest')
     pyplot.xticks([]), pyplot.yticks([])
     pyplot.show()
+    print("             Elapsed Time: ", t.time() - start, "s")
