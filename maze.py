@@ -4,8 +4,7 @@ import matplotlib.pyplot as pyplot
 import time as t
 from queue import PriorityQueue
 
-#--- changing priority queue a little bit ---#
-#--- the only significant change is that you enter (item, value) and receive item ---#
+#--- the only significant change is that you enter (item, value) with put and receive item with get ---#
 
 class MyPriorityQueue(PriorityQueue):
     def __init__(self):
@@ -20,22 +19,26 @@ class MyPriorityQueue(PriorityQueue):
         _, _, item = PriorityQueue.get(self, *args, **kwargs)
         return item
 
-#--- coloring the maze ---#
+#--- numpy aplicattion to color the maze by using arrays ---#
     
 palletes =  {"maze":  np.array([[1.0, 1.0, 1.0],     #---      0 = white (path)       ---#
                                 [0.0, 0.0, 0.0],     #---      1 = black (wall)       ---#
                                 [0.0, 1.0, 0.0],     #---      2 = green (init)       ---#
-                                [1.0, 0.0, 0.0],      #---      3 = red (target)       ---#
+                                [1.0, 0.0, 0.0],     #---      3 = red (target)       ---#
                                 [1.0, 1.0, 0.0]])}   #---  4 = yellow (winning path)  ---#
     
 def create_image(boolean_array, palette_name):
     return palletes[palette_name][boolean_array.astype(int)]
 
 
-#--- Maze Generator using Randomized Prim's Algorithm ---#
+
+
+#-------------------------------- Maze Generator using Randomized Prim's Algorithm --------------------------------#
+
+
+
 
 #--- every point in the grid is a wall that can turn into a path ---#
-#--- to do that, is easier using booleans and classes.           ---#
         
 class Wall:
     
@@ -127,8 +130,9 @@ def make_maze(x, y):
         if cell.open_neighbors <= 1: #--- if it has less than 1 adjacent neighbor that is a path ---#
             cell.is_path = True
             cell.is_visited = True
-            if cell.position[1] == 1 or cell.position[1] == y - 2:
-                last_cell = cell #--- the last cell that is in the border to turn into a path is the target point in the maze ---#
+            if cell.position[1] == 1 or cell.position[1] == y - 2: #--- exit must be on ther border and between maze's middle and bottom ---#
+                if cell.position[0] > np.floor(x/2):
+                    last_cell = cell #--- the last cell that is in the border to turn into a path is the target point in the maze ---#
             for neigh in cell.neighbors:
                 if not neigh.is_visited:
                     if neigh.open_neighbors <= 1:
@@ -166,7 +170,9 @@ def make_maze(x, y):
 
 
 
-#------------------------------------------------- path finder -------------------------------------------------#
+
+#-------------------------------------- Path Finder using A* Search Algorithm --------------------------------------#
+
 
 
 
@@ -258,7 +264,6 @@ def solve_aux(queue, target):
 #--- main function of this code ---#
         
 def PathFinder(x, y):
-    
     start= t.time()
     
     #--- plotting the initial maze with the start as a green square and exit as a red square ---#
