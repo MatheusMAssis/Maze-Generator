@@ -6,7 +6,7 @@ from queue import PriorityQueue
 
 #--- the only significant change is that you enter (item, value) with put and receive item with get ---#
 
-class MyPriorityQueue(PriorityQueue):
+class my_priority_queue(PriorityQueue):
     def __init__(self):
         PriorityQueue.__init__(self)
         self.counter = 0
@@ -93,7 +93,7 @@ class Wall:
 
 def make_maze(x, y):
 
-    wall_list = MyPriorityQueue()
+    wall_list = my_priority_queue()
     
     #--- using three matrix, it was easier to localize whe points that I needed during the code ---#
     
@@ -261,9 +261,11 @@ def solve_aux(queue, target):
         maze_obj.gen_neighbors(queue, maze_obj, target)
         return solve_aux(queue, target)
 
+
 #--- main function of this code ---#
-        
-def PathFinder(x, y):
+    
+    
+def path_finder(x, y):
     start= t.time()
     
     #--- plotting the initial maze with the start as a green square and exit as a red square ---#
@@ -273,7 +275,7 @@ def PathFinder(x, y):
     
     #--- maze-tree is a priority queue that make it possible for us to use the A* search algorithm ---#
     
-    maze_tree = MyPriorityQueue()
+    maze_tree = my_priority_queue()
     
     
     target = target.position
