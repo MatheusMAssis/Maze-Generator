@@ -21,6 +21,7 @@ The main function of this program is called **path_finder(n, m)**. When you call
 ## Built With
 
 * [Python](https://www.python.org/) - Programming Language used.
+* [Algorithm](https://en.wikipedia.org/wiki/Maze_generation_algorithm) - Where I found Algorithms to generate mazes
 
 ## Authors
 
