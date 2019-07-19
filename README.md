@@ -1,7 +1,31 @@
 # Maze-Generator
 
-In a one-day work, using a Randomized Prim's Algorithm, I created a maze generator. To use this generator, you just got to use your favorite IDE (I prefer to use Spyder for Python 3.6) that supports matplotlib.pyplot and run this code as { make-maze(x, y) | x = width, y = length }. It will return a plot of the maze.
+Maze Generator that creates a maze with chosen size and also plots the optimal path to the exit.
 
-#### created by: Matheus de Moncada Assis
+## About
 
-The code is very efficient, even with large mazes. It also has a plot using matplotlib.pyplot. This is a work in progress, as I'm going to make a A* search Algorithm to find the shortest path in this maze and color it.
+In a one-day work, using a Randomized Prim's Algorithm, I created a maze generator. As it was a Friday, I continued doing it until Sunday, when I achieved the final program. The main file consists of one main function and two main processes.
+
+#### Generating Maze
+
+Using a Randomized Prim's Algorithm in a Square with size n x m, I could create a Maze Generator. Briefly, this algorithm color its tiles in a way that two adjacent tiles will never be the same (wall/path).
+
+#### Finding Exit Path
+
+Using the A* algorithm to find the way out of the generated maze, I could create the Path Finder function. Besides being very efficient, this algorithm find the way out very fast, even with big mazes.
+
+#### Path Finder Function
+
+The main function of this program is called **path_finder(n, m)**. When you call it, a maze (with entrance and exit point) is generated and plotted in your output screen. After this, the same program find its exit and color the path in yellow and plot the same maze, but with a yellow path connecting the entrance to the exit. The mean time to run is less than **one second** for small mazes and it can take up to **two seconds** for larger mazes. This program won't work for mazes bigger than 150x150, due to recurrency error.
+
+## Built With
+
+* [Python](https://www.python.org/) - Programming Language used.
+
+## Authors
+
+* **Matheus Assis** - [GitHub](https://github.com/MatheusMAssis)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
