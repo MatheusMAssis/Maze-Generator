@@ -30,3 +30,9 @@ The main function of this program is called **path_finder(n, m)**. When you call
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Thanks
+
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+Thanks for visiting my GitHub! <3
