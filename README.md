@@ -1,5 +1,7 @@
 # Maze-Generator
 
+![Alt Text](/MazeImagesResults/InitialMaze_5x5.png)
+
 Maze Generator that creates a maze with chosen size and also plots the optimal path to the exit.
 
 ## About
