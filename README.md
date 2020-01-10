@@ -10,6 +10,8 @@
 
 Maze Generator that creates a maze with chosen size and also plots the optimal path to the exit.
 
+> Any size is accepted, but for over than 200x200 the algorithm can have an error of stack overflow due to recurrence.
+
 ## About
 
 In a one-day work, using a Randomized Prim's Algorithm, I created a maze generator. As it was a Friday, I continued doing it until Sunday, when I achieved the final program. The main file consists of one main function and two main processes.
