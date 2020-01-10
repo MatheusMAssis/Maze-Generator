@@ -1,8 +1,10 @@
 # Maze-Generator
 
+### 5x5 Maze Initial and Solved States
 ![Alt Text](/MazeImagesResults/InitialMaze_5x5.png)
 ![Alt Text](/MazeImagesResults/FinalMaze_5x5.png)
 
+### 150x150 Maze Initial and Solved States
 ![Alt Text](/MazeImagesResults/InitialMaze_150x150.png)
 ![Alt Text](/MazeImagesResults/FinalMaze_150x150.png)
 
